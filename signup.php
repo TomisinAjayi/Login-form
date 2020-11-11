@@ -1,85 +1,4 @@
-<?php
-// Functions to filter user inputs
-function filterName($field){
-    // Sanitize user name
-    $field = filter_var(trim($field), FILTER_SANITIZE_STRING);
-    
-    // Validate user name
-    if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        return $field;
-    } else{
-        return FALSE;
-    }
-}    
-function filterEmail($field){
-    // Sanitize e-mail address
-    $field = filter_var(trim($field), FILTER_SANITIZE_EMAIL);
-    
-    // Validate e-mail address
-    if(filter_var($field, FILTER_VALIDATE_EMAIL)){
-        return $field;
-    } else{
-        return FALSE;
-    }
-}
-function filterString($field){
-    // Sanitize string
-    $field = filter_var(trim($field), FILTER_SANITIZE_STRING);
-    if(!empty($field)){
-        return $field;
-    } else{
-        return FALSE;
-    }
-}
- 
-// Define variables and initialize with empty values
-$nameErr = $emailErr = $messageErr = $passwordErr = "";
-$name = $lname = $email = $password = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Validate user name
-    if(empty($_POST["name"])){
-        $nameErr = "Please enter your name.";
-    } else{
-        $name = filterName($_POST["name"]);
-        if($name == FALSE){
-            $nameErr = "Please enter a valid name.";
-        }
-    }
-
-    // Validate user name
-    if(empty($_POST["lname"])){
-        $nameErr = "Please enter your name.";
-    } else{
-        $lname = filterName($_POST["lname"]);
-        if($lname == FALSE){
-            $nameErr = "Please enter a valid name.";
-        }
-    }
-    
-    // Validate email address
-    if(empty($_POST["email"])){
-        $emailErr = "Please enter your email address.";     
-    } else{
-        $email = filterEmail($_POST["email"]);
-        if($email == FALSE){
-            $emailErr = "Please enter a valid email address.";
-        }
-    }
-
-    // Validate user passowrd
-    if(empty($_POST["password"])){
-        $passwordErr = "Please enter your password.";     
-    } else{
-        $password = filterString($_POST["password"]);
-        if($password == FALSE){
-            $passwordErr = "Please enter a valid password.";
-        }
-    }
-}
-?>
+<?php include("database.php")?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -106,29 +25,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="col-xs-6 col-sm-6 col-md-8 rightside" style="padding:0px"> 
                     <h1>Sign up for free.</h1>
 
-                    <form action="welcome-page.php" class="formdesign" method="POST">
+                    <form action="signup.php" class="formdesign" method="post">
+                        <?php include("errors.php"); ?>
                         <div class="form-group">
-                            <input name="name"type="text" class="form-control"  value="<?php echo $name; ?>" placeholder="First Name" required>
-                            <span class="error"><?php echo $nameErr; ?></span>
+                            <input name="fname"type="text" class="form-control"  value="<?php echo $fname; ?>" placeholder="First Name" required>
                         </div>
                         
                         <div class="form-group">
                             <input name="lname" type="text" class="form-control" value="<?php echo $lname; ?>" placeholder="Last Name" required>
-                            <span class="error"><?php echo $nameErr; ?></span>
                         </div>
 
                         <div class="form-group">
                             <input name="email" type="email" class="form-control" value="<?php echo $email; ?>" placeholder="Email-Address" required>
-                            <span class="error"><?php echo $emailErr; ?></span>
                         </div>
 
                         <div class="form-group">
-                            <input name="password" type="password" class="form-control" value="<?php echo $password; ?>" placeholder="Password" required>
-                            <span class="error"><?php echo $passwordErr; ?></span>
+                            <input name="password_1" type="password" class="form-control" placeholder="Password" required>
                         </div>
         
-                        <button type="submit" class="btn btn-lg btn-block btn-primary" id="signupbtn">Signup</button>
-                        <a href="login.html" id="loginlink">Already have an account?</a>
+                        <div class="form-group">
+                            <input name="password_2" type="password" class="form-control" placeholder="Confirm Password" required>
+                        </div>
+
+                        <button name="reg_user" type="submit" class="btn btn-lg btn-block btn-primary" id="signupbtn">Signup</button>
+                        <a href="login.php" id="loginlink">Already have an account?</a>
                     </form>
                 </div>
             </div>
