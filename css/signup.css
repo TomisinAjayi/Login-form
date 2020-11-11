@@ -45,15 +45,20 @@ body {
 input.form-control {
     padding-top: 30px;
     padding-bottom: 30px;
-    border: 1px solid f5eeee ;
+    border: 1px solid #f5eeee;
     border-radius: 40px;
+    outline: none;
 }
 #signupbtn {
     margin-top: 20px;
 }
+input {
+   
+}
 #loginlink {
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 .error {
     width: 92%;
@@ -69,7 +74,7 @@ input.form-control {
     border: 1px solid #3c763d;
     margin-bottom: 20px;
 }
-@media (max-width: 576px) { 
+@media only screen and (max-width: 900px) {
     .formdesign {
         margin-left: 45px;
     }

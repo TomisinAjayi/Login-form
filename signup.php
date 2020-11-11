@@ -14,15 +14,7 @@
         
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-4 leftside">
-                    <h2>Login using social media to get quick access</h2>
-                    <div class="list-group container">
-                        <button class="smbutton" id="facebookbtn">Login with Facebook</button>
-                        <button class="smbutton" id="twitterbtn">Login with Twitter</button>
-                        <button class="smbutton" id="googlebtn">Login with Google</button>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-8 rightside" style="padding:0px"> 
+                <div class="col-xs-6 col-sm-6 col-md-8 order-sm-12 rightside" style="padding:0px"> 
                     <h1>Sign up for free.</h1>
 
                     <form action="signup.php" class="formdesign" method="post">
@@ -50,6 +42,14 @@
                         <button name="reg_user" type="submit" class="btn btn-lg btn-block btn-primary" id="signupbtn">Signup</button>
                         <a href="login.php" id="loginlink">Already have an account?</a>
                     </form>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 order-sm-1 leftside">
+                    <h2>Login using social media to get quick access</h2>
+                    <div class="list-group container">
+                        <button class="smbutton" id="facebookbtn">Login with Facebook</button>
+                        <button class="smbutton" id="twitterbtn">Login with Twitter</button>
+                        <button class="smbutton" id="googlebtn">Login with Google</button>
+                    </div>
                 </div>
             </div>
         </div>
