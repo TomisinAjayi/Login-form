@@ -1,3 +1,5 @@
+<?php include('database.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,7 +26,8 @@
                     <h1>Login to your account</h1>
                     <p>Don't have an account? <a href="signup.php">Sign up for free!</a></p>
 
-                    <form action="" class="formdesign" name="myForm" onsubmit="return validateForm()">
+                    <form action="login.php" class="formdesign" name="myForm" method="post">
+                        <?php include('errors.php'); ?>
                         <div class="form-group"><input name="email" type="email" class="form-control" placeholder="Email-Address" required></div>
                         <div class="form-group"><input name="password" type="password" class="form-control" placeholder="Password" required></div>
                         <div class="form-row">
@@ -37,10 +40,10 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <a href="forgotpassword.html" >Forgot Password?</a>
+                                <a href="forgotpassword.php" >Forgot Password?</a>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-lg btn-block btn-primary" id="loginbtn">Login</button>
+                        <button name="login_user" type="submit" class="btn btn-lg btn-block btn-primary" id="loginbtn">Login</button>
                     </form>
                 </div>
             </div>
